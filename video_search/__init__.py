@@ -1,0 +1,1 @@
+"""Local video object search."""

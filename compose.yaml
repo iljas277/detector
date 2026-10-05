@@ -1,0 +1,10 @@
+services:
+  api:
+    build: .
+    ports: ["127.0.0.1:8000:8000"]
+    volumes: ["./data:/data"]
+  worker:
+    build: .
+    command: ["python", "-m", "video_search.cli", "worker"]
+    volumes: ["./data:/data"]
+    depends_on: [api]

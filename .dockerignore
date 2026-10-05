@@ -1,0 +1,8 @@
+*
+!requirements.txt
+!video_search/
+!video_search/**
+!web/
+!web/**
+**/__pycache__/
+**/*.pyc

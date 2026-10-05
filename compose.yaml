@@ -1,14 +1,21 @@
-name: detector-cpu
+name: detector-gpu
 
 services:
   api:
     build: .
-    image: detector:cpu
-    ports: ["127.0.0.1:8000:8000"]
-    volumes: ["./data:/data"]
+    image: detector:gpu
+    ports: ["127.0.0.1:8001:8000"]
+    volumes: ["./data-gpu:/data"]
   worker:
     build: .
-    image: detector:cpu
+    image: detector:gpu
     command: ["python", "-m", "video_search.cli", "worker"]
-    volumes: ["./data:/data"]
+    volumes: ["./data-gpu:/data"]
     depends_on: [api]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

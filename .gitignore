@@ -1,5 +1,7 @@
 .venv/
+.venv-gpu/
 data/
+data-gpu/
 artifacts/
 .env
 __pycache__/
